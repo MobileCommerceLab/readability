@@ -2,7 +2,7 @@ Readability
 ====================
 
 A collection of functions that measure the readability of a given body of text. I'd
-recommend checking out the wikipedia articles below--most of the metrics estimate 
+recommend checking out the wikipedia articles below--most of the metrics estimate
 the grade level required to comprehend a given block of text and may return odd results
 on small snippets of text.
 
@@ -43,3 +43,12 @@ Largely lifted from:
     https://github.com/nltk/nltk_contrib/tree/master/nltk_contrib/readability
 
 SMOG index appears to perform most accurately.
+
+#Usage
+
+```
+from readability.readability import Readability
+<rest as usual>
+
+#caveats
+The cloned library should be in a folder titled 'readability' at the root directory
