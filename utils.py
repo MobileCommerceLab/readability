@@ -6,17 +6,17 @@ into it's component syntactic parts.
 import nltk
 
 from nltk.tokenize import RegexpTokenizer
-import syllables_en
-
+from .syllables_en import count
 TOKENIZER = RegexpTokenizer('(?u)\W+|\$[\d\.]+|\S+')
 SPECIAL_CHARS = ['.', ',', '!', '?']
 
 def get_char_count(words):
     characters = 0
     for word in words:
-        characters += len(word.decode("utf-8"))
+        print(word)
+        characters += len(word)
     return characters
-    
+
 def get_words(text=''):
     words = []
     words = TOKENIZER.tokenize(text)
@@ -38,7 +38,7 @@ def get_sentences(text=''):
 def count_syllables(words):
     syllableCount = 0
     for word in words:
-        syllableCount += syllables_en.count(word)
+        syllableCount += count(word)
     return syllableCount
 
 #This method must be enhanced. At the moment it only
@@ -50,11 +50,11 @@ def count_complex_words(text=''):
     complex_words = 0
     found = False
     cur_word = []
-    
-    for word in words:          
+
+    for word in words:
         cur_word.append(word)
         if count_syllables(cur_word)>= 3:
-            
+
             #Checking proper nouns. If a word starts with a capital letter
             #and is NOT at the beginning of a sentence we don't add it
             #as a complex word.
@@ -65,10 +65,9 @@ def count_complex_words(text=''):
                     if str(sentence).startswith(word):
                         found = True
                         break
-                if found: 
+                if found:
                     complex_words += 1
                     found = False
-                
+
         cur_word.remove(word)
     return complex_words
-

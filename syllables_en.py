@@ -138,4 +138,3 @@ def count(word):
     fallback_cache[word] = count
 
     return count
-
