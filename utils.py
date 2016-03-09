@@ -13,7 +13,7 @@ SPECIAL_CHARS = ['.', ',', '!', '?']
 def get_char_count(words):
     characters = 0
     for word in words:
-        print(word)
+        #print(word)
         characters += len(word)
     return characters
 
